@@ -1,2 +1,2 @@
 # UnitConverterIA
-This program is a unit converter. You may choose a group of units to convert within, and insert values to be converted. More TBA
+This program is a unit converter. Within the GUI frame, you may select a unit group on the bottom in which you will convert your units within. You will then navigate to the top panel in which you may select an input unit from the combo box. Then type your unit amount in the text field located underneath the input combo box. Then select the output unit located in the middle of the GUI frame. Click the 'Calculate' button, and your converted output amount will be displayed in the bottom panel.
