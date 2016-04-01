@@ -12,6 +12,8 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.lang.String;
+import javax.swing.MutableComboBoxModel;
 
 public class ConverterFrame extends JFrame{
   private static final int FRAME_WIDTH =600;
@@ -30,6 +32,7 @@ public class ConverterFrame extends JFrame{
   private JRadioButton timeButton;
   private JRadioButton weightButton;
   private JButton calcButton;
+  private int boxgroup;
   
   public ConverterFrame(){
       setSize(FRAME_WIDTH, FRAME_HEIGHT); 
@@ -39,7 +42,8 @@ public class ConverterFrame extends JFrame{
          //sets height of GUI frame
       createTextField();
       createControlPanel();
-      createComboBox();
+      //createComboBox();
+      //makeComboBoxModel();
       createComboBox2();
       createButton();
       createPanel();
@@ -75,50 +79,43 @@ public class ConverterFrame extends JFrame{
       //add(panel, BorderLayout.North);
    }
  
-  public JPanel createComboBox()
-   {
-         subUnitCombo = new JComboBox();
-         subUnitCombo.addItem("Farenheit");
-         subUnitCombo.addItem("Celcius");
-         subUnitCombo.addItem("Kelvin");
-         subUnitCombo.setEditable(true);
-    //  subUnitCombo.addActionListener(listener);
 
-         JPanel panel = new JPanel();
-         panel.add(subUnitCombo);
-         return panel;
-   }
   
-  public JPanel createComboBox2()
-   {
-         subUnitCombo = new JComboBox();
-         subUnitCombo.addItem("Farenheit");
-         subUnitCombo.addItem("Celcius");
-         subUnitCombo.addItem("Kelvin");
-         subUnitCombo.setEditable(true);
-    //  subUnitCombo.addActionListener(listener);
 
-         JPanel panel = new JPanel();
-         panel.add(subUnitCombo);
-              return panel;
-   }
   
    public JPanel createRadioButtons()
    {
          distButton = new JRadioButton("Distance");
-         // smallButton.addActionListener(listener);
-
+                   distButton.addActionListener(new ActionListener() {
+                   public void actionPerformed(ActionEvent arg0) {
+                   boxgroup=1;
+                                                  }
+                                         });
          measButton = new JRadioButton("Measurement");
-        //  mediumButton.addActionListener(listener);
-
+                   measButton.addActionListener(new ActionListener() {
+                   public void actionPerformed(ActionEvent arg0) {
+                   boxgroup=2;
+                   }
+                                         });
          tempButton = new JRadioButton("Temperature");
-        //   largeButton.addActionListener(listener);
-       //  largeButton.setSelected(true);
+                   tempButton.addActionListener(new ActionListener() {
+                   public void actionPerformed(ActionEvent arg0) {
+                   boxgroup=3;
+                   }
+                                         });
          timeButton = new JRadioButton("Time");
-      
+                   timeButton.addActionListener(new ActionListener() {
+                   public void actionPerformed(ActionEvent arg0) {
+                   boxgroup=4;
+                   }
+                                         });           
          weightButton = new JRadioButton("Weight");
-
-        // Add radio buttons to button group
+                   weightButton.addActionListener(new ActionListener() {
+                   public void actionPerformed(ActionEvent arg0) {
+                   boxgroup=5;
+                   }
+                                         });           
+                   
 
       ButtonGroup group = new ButtonGroup();
          group.add(distButton);
@@ -138,6 +135,172 @@ public class ConverterFrame extends JFrame{
       return panel;
    }
    
+                   
+                   
+ /* public JPanel createComboBox()
+   {
+         subUnitCombo = new JComboBox();
+         if (boxgroup == 1){
+              subUnitCombo.addItem("Inch");
+              subUnitCombo.addItem("Foot");
+              subUnitCombo.addItem("Mile");
+              subUnitCombo.addItem("Yard");
+              subUnitCombo.addItem("Meter");
+              subUnitCombo.addItem("Centimeter");
+              subUnitCombo.addItem("Milimeter");
+              subUnitCombo.addItem("Kilometer");
+              subUnitCombo.setEditable(true);
+         }
+         else if (boxgroup == 2){
+             subUnitCombo.addItem("Tsp");
+              subUnitCombo.addItem("Tbsp");
+              subUnitCombo.addItem("Cup");
+              subUnitCombo.addItem("Oz");
+              subUnitCombo.addItem("Pint");
+              subUnitCombo.addItem("Quart");
+              subUnitCombo.addItem("Gallon");
+              subUnitCombo.addItem("Liter");
+              subUnitCombo.addItem("Mililiter");
+              subUnitCombo.setEditable(true);
+         }
+          else if (boxgroup == 3){
+              subUnitCombo.addItem("Farenheit");
+              subUnitCombo.addItem("Celcius");
+              subUnitCombo.addItem("Kelvin");
+              subUnitCombo.setEditable(true);
+         }
+           else if (boxgroup == 4){
+               subUnitCombo.addItem("Second");
+              subUnitCombo.addItem("Minute");
+              subUnitCombo.addItem("Hour");
+              subUnitCombo.addItem("Day");
+              subUnitCombo.addItem("Week");
+              subUnitCombo.addItem("Year");
+              subUnitCombo.setEditable(true);
+         }
+            else if (boxgroup == 5){
+                subUnitCombo.addItem("Ounce");
+              subUnitCombo.addItem("Pound");
+              subUnitCombo.addItem("Gram");
+              subUnitCombo.addItem("Kilogram");
+              subUnitCombo.addItem("Stone");
+              subUnitCombo.setEditable(true);
+         }
+
+         JPanel panel = new JPanel();
+         panel.add(subUnitCombo);
+         return panel;
+   }                   
+          
+  */
+
+  /* public MutableComboBoxModel makeComboBoxModel(String[] boxgroup){
+    MutableComboBoxModel subUnitCombo = new DefaultComboBoxModel();
+    if (boxgroup == 1){
+              subUnitCombo.addElement("Inch");
+              subUnitCombo.addElement("Foot");
+              subUnitCombo.addElement("Mile");
+              subUnitCombo.addElement("Yard");
+              subUnitCombo.addElement("Meter");
+              subUnitCombo.addElement("Centimeter");
+              subUnitCombo.addElement("Milimeter");
+              subUnitCombo.addElement("Kilometer");
+              subUnitCombo.setEditable(true);
+         }
+         else if (boxgroup == 2){
+             subUnitCombo.addElement("Tsp");
+              subUnitCombo.addElement("Tbsp");
+              subUnitCombo.addElement("Cup");
+              subUnitCombo.addElement("Oz");
+              subUnitCombo.addElement("Pint");
+              subUnitCombo.addElement("Quart");
+              subUnitCombo.addElement("Gallon");
+              subUnitCombo.addElement("Liter");
+              subUnitCombo.addElement("Mililiter");
+              subUnitCombo.setEditable(true);
+         }
+          else if (boxgroup == 3){
+              subUnitCombo.addElement("Farenheit");
+              subUnitCombo.addElement("Celcius");
+              subUnitCombo.addElement("Kelvin");
+              subUnitCombo.setEditable(true);
+         }
+           else if (boxgroup == 4){
+               subUnitCombo.addElement("Second");
+              subUnitCombo.addElement("Minute");
+              subUnitCombo.addElement("Hour");
+              subUnitCombo.addElement("Day");
+              subUnitCombo.addElement("Week");
+              subUnitCombo.addElement("Year");
+              subUnitCombo.setEditable(true);
+         }
+            else if (boxgroup == 5){
+                subUnitCombo.addElement("Ounce");
+              subUnitCombo.addElement("Pound");
+              subUnitCombo.addElement("Gram");
+              subUnitCombo.addElement("Kilogram");
+              subUnitCombo.addElement("Stone");
+              subUnitCombo.setEditable(true);
+         }
+            return comboBox;
+   }
+   */
+  
+ public JPanel createComboBox2()
+   {
+         subUnitCombo = new JComboBox();
+         if (boxgroup == 1){
+              subUnitCombo.addItem("Inch");
+              subUnitCombo.addItem("Foot");
+              subUnitCombo.addItem("Mile");
+              subUnitCombo.addItem("Yard");
+              subUnitCombo.addItem("Meter");
+              subUnitCombo.addItem("Centimeter");
+              subUnitCombo.addItem("Milimeter");
+              subUnitCombo.addItem("Kilometer");
+              subUnitCombo.setEditable(true);
+         }
+         else if (boxgroup == 2){
+             subUnitCombo.addItem("Tsp");
+              subUnitCombo.addItem("Tbsp");
+              subUnitCombo.addItem("Cup");
+              subUnitCombo.addItem("Oz");
+              subUnitCombo.addItem("Pint");
+              subUnitCombo.addItem("Quart");
+              subUnitCombo.addItem("Gallon");
+              subUnitCombo.addItem("Liter");
+              subUnitCombo.addItem("Mililiter");
+              subUnitCombo.setEditable(true);
+         }
+          else if (boxgroup == 3){
+              subUnitCombo.addItem("Farenheit");
+              subUnitCombo.addItem("Celcius");
+              subUnitCombo.addItem("Kelvin");
+              subUnitCombo.setEditable(true);
+         }
+           else if (boxgroup == 4){
+               subUnitCombo.addItem("Second");
+              subUnitCombo.addItem("Minute");
+              subUnitCombo.addItem("Hour");
+              subUnitCombo.addItem("Day");
+              subUnitCombo.addItem("Week");
+              subUnitCombo.addItem("Year");
+              subUnitCombo.setEditable(true);
+         }
+            else if (boxgroup == 5){
+                subUnitCombo.addItem("Ounce");
+              subUnitCombo.addItem("Pound");
+              subUnitCombo.addItem("Gram");
+              subUnitCombo.addItem("Kilogram");
+              subUnitCombo.addItem("Stone");
+              subUnitCombo.setEditable(true);
+         }
+    
+
+         JPanel panel = new JPanel();
+         panel.add(subUnitCombo);
+              return panel;
+   }
    
    private void createButton()
    {
@@ -151,11 +314,11 @@ public class ConverterFrame extends JFrame{
    
   private void createPanel()
    {
-     JPanel subUnitPanel = createComboBox();
+  //   JPanel subUnitPanel = createComboBox();
          JPanel panel = new JPanel();
          panel.setLayout(new GridLayout(3, 1));
 
-         panel.add(subUnitPanel);
+   //      panel.add(subUnitPanel);
          panel.add(inputLabel);
          panel.add(inputField);
          panel.add(calcButton);
